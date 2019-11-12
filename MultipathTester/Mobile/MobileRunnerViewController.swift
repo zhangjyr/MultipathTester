@@ -96,7 +96,7 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
         }
         
         // Start observing app going to background notifications
-        NotificationCenter.default.addObserver(self, selector: #selector(MobileRunnerViewController.applicationDidSwitchToBackground(note:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MobileRunnerViewController.applicationDidSwitchToBackground(note:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         
         NotificationCenter.default.post(name: Utils.TestsLaunchedNotification, object: nil, userInfo: ["startNewTestsEnabled": false])
         
@@ -160,7 +160,7 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
             wifiIPs = []
             if multiHopTimer == nil {
                 multiHopTimer = Timer(timeInterval: 30.0, target: self, selector: #selector(MobileRunnerViewController.multiHopFired), userInfo: nil, repeats: false)
-                RunLoop.current.add(multiHopTimer!, forMode: .commonModes)
+                RunLoop.current.add(multiHopTimer!, forMode: RunLoop.Mode.common)
             }
             DispatchQueue.main.async {
                 self.userLabel.text = "WiFi is lost, if none is found in a few seconds, the test will stop."
@@ -308,9 +308,9 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
         self.navigationItem.hidesBackButton = true
         multiHopTimer = nil
         timer = Timer(timeInterval: 0.2, target: self, selector: #selector(MobileRunnerViewController.getDelays), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer!, forMode: .commonModes)
+        RunLoop.current.add(timer!, forMode: RunLoop.Mode.common)
         cellTimer = Timer(timeInterval: 0.5, target: self, selector: #selector(MobileRunnerViewController.probeCellular), userInfo: nil, repeats: true)
-        RunLoop.current.add(cellTimer!, forMode: .commonModes)
+        RunLoop.current.add(cellTimer!, forMode: RunLoop.Mode.common)
         print("We start mobility!")
         upQUICDelays = []
         downQUICDelays = []

@@ -102,7 +102,7 @@ class UICircularProgressRingLayer: CAShapeLayer {
     @NSManaged var decimalPlaces: Int
     
     var animationDuration: TimeInterval = 1.0
-    var animationStyle: String = kCAMediaTimingFunctionEaseInEaseOut
+    var animationStyle: String = convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.easeInEaseOut)
     var animated = false
     @NSManaged weak var valueDelegate: UICircularProgressRingView?
     
@@ -151,7 +151,7 @@ class UICircularProgressRingLayer: CAShapeLayer {
         if event == "value" && self.animated {
             let animation = CABasicAnimation(keyPath: "value")
             animation.fromValue = self.presentation()?.value(forKey: "value")
-            animation.timingFunction = CAMediaTimingFunction(name: animationStyle)
+            animation.timingFunction = CAMediaTimingFunction(name: convertToCAMediaTimingFunctionName(animationStyle))
             animation.duration = animationDuration
             return animation
         }
@@ -320,4 +320,14 @@ class UICircularProgressRingLayer: CAShapeLayer {
         
         valueLabel.drawText(in: self.bounds)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCAMediaTimingFunctionName(_ input: CAMediaTimingFunctionName) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToCAMediaTimingFunctionName(_ input: String) -> CAMediaTimingFunctionName {
+	return CAMediaTimingFunctionName(rawValue: input)
 }

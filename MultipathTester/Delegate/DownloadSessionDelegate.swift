@@ -72,7 +72,7 @@ class DownloadSessionDelegate : NSObject, URLSessionDelegate, URLSessionDownload
             content.title = title
             content.body = body
             content.categoryIdentifier = "RESULT"
-            content.sound = UNNotificationSound.default()
+            content.sound = UNNotificationSound.default
             content.userInfo["url"] = url
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)

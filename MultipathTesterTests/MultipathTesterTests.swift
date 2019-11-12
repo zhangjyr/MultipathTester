@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import QUICTester
+@testable import MultipathTester
 
-class QUICTesterTests: XCTestCase {
+class MultipathTesterTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

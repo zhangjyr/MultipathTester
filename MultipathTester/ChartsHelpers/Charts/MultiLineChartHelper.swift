@@ -51,7 +51,7 @@ class MultiLineChartHelper {
     }
     
     static func setData(to chartView: LineChartView, with1 values1: [ChartDataEntry], label1: String, with2 values2: [ChartDataEntry], label2: String) {
-        let set1 = LineChartDataSet(values: values1, label: label1)
+        let set1 = LineChartDataSet(entries: values1, label: label1)
         set1.axisDependency = .left
         set1.setColor(UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1))
         set1.drawCirclesEnabled = false
@@ -63,7 +63,7 @@ class MultiLineChartHelper {
         set1.highlightColor = UIColor(red: 244/255, green: 117/255, blue: 117/255, alpha: 1)
         set1.drawCircleHoleEnabled = false
         
-        let set2 = LineChartDataSet(values: values2, label: label2)
+        let set2 = LineChartDataSet(entries: values2, label: label2)
         set2.axisDependency = .right
         set2.setColor(.red)
         set2.drawCirclesEnabled = false

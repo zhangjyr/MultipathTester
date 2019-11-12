@@ -50,8 +50,8 @@ class ConsentFormViewController: UIViewController {
         
     }
     @IBAction func declineConsent(_ sender: Any) {
-        let alert = UIAlertController(title: "Thank you", message: "Thanks for the interest you have in our application.", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Exit", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in exit(0)}))
+        let alert = UIAlertController(title: "Thank you", message: "Thanks for the interest you have in our application.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Exit", style: UIAlertAction.Style.default, handler: {(alert: UIAlertAction!) in exit(0)}))
         self.present(alert, animated: true, completion: nil)
     }
     

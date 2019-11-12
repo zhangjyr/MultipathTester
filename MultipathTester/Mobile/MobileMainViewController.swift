@@ -84,7 +84,7 @@ class MobileMainViewController: UIViewController {
         }
         
         timer = Timer(timeInterval: 0.5, target: self, selector: #selector(MobileMainViewController.probeCellular), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer!, forMode: .commonModes)
+        RunLoop.current.add(timer!, forMode: RunLoop.Mode.common)
         determineClosestServer()
     }
     
@@ -329,8 +329,8 @@ class MobileMainViewController: UIViewController {
         The test stops once the WiFi network is lost or changed. The transfer rate is about 80 KB/s.
 
         This mode asks for location permission to estimate how far you can reach your WiFi. This estimation is not available if the permission is not granted.
-        """, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        """, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 }

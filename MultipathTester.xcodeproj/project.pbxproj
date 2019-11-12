@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F913359237A5A9E006DB0A5 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F913356237A5A6E006DB0A5 /* Charts.framework */; };
+		3F91335A237A5A9E006DB0A5 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F913356237A5A6E006DB0A5 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE09053D20333E9400B1445A /* ConsentFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE09053C20333E9400B1445A /* ConsentFormViewController.swift */; };
 		CE1362AD20765FDE001E58B2 /* ResultLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1362AC20765FDE001E58B2 /* ResultLabelViewController.swift */; };
 		CE1362AF20766705001E58B2 /* ResultLineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1362AE20766705001E58B2 /* ResultLineChartViewController.swift */; };
@@ -81,8 +83,6 @@
 		CE9EBB7820ADB24A008B9200 /* WifiUDPingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9EBB7720ADB24A008B9200 /* WifiUDPingTest.swift */; };
 		CE9EBB7A20ADB258008B9200 /* CellUDPingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9EBB7920ADB258008B9200 /* CellUDPingTest.swift */; };
 		CEA4CF38207BAC2C00650DFF /* DownloadSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4CF37207BAC2C00650DFF /* DownloadSessionDelegate.swift */; };
-		CEA702E22003C6A000FDFB89 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA702DF2003C66900FDFB89 /* Charts.framework */; };
-		CEA702E32003C6A000FDFB89 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CEA702DF2003C66900FDFB89 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CEA702E82003D67100FDFB89 /* MobileRunnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA702E72003D67100FDFB89 /* MobileRunnerViewController.swift */; };
 		CEA702F02003DB4D00FDFB89 /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA702EC2003DB4D00FDFB89 /* DateValueFormatter.swift */; };
 		CEA702F12003DB4D00FDFB89 /* IntAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA702ED2003DB4D00FDFB89 /* IntAxisValueFormatter.swift */; };
@@ -111,33 +111,26 @@
 		CEDAF2541F5FE8E000310153 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDAF2521F5FE8E000310153 /* Main.storyboard */; };
 		CEDAF2561F5FE8E000310153 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDAF2551F5FE8E000310153 /* Assets.xcassets */; };
 		CEDAF2591F5FE8E000310153 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDAF2571F5FE8E000310153 /* LaunchScreen.storyboard */; };
-		CEDAF2641F5FE8E100310153 /* QUICTesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDAF2631F5FE8E100310153 /* QUICTesterTests.swift */; };
-		CEDAF26F1F5FE8E100310153 /* QUICTesterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDAF26E1F5FE8E100310153 /* QUICTesterUITests.swift */; };
+		CEDAF2641F5FE8E100310153 /* MultipathTesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDAF2631F5FE8E100310153 /* MultipathTesterTests.swift */; };
+		CEDAF26F1F5FE8E100310153 /* MultipathTesterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDAF26E1F5FE8E100310153 /* MultipathTesterUITests.swift */; };
 		CEF63EB4209321E10029B6EA /* MobileSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF63EB3209321E10029B6EA /* MobileSettingsTableViewController.swift */; };
 		CEF63EB720933FA40029B6EA /* MobileSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF63EB620933FA40029B6EA /* MobileSettingsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CEA702DE2003C66900FDFB89 /* PBXContainerItemProxy */ = {
+		3F913355237A5A6E006DB0A5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CEA702D92003C66800FDFB89 /* Charts.xcodeproj */;
+			containerPortal = 3F913350237A5A6E006DB0A5 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
 			remoteInfo = Charts;
 		};
-		CEA702E02003C66900FDFB89 /* PBXContainerItemProxy */ = {
+		3F913357237A5A6E006DB0A5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CEA702D92003C66800FDFB89 /* Charts.xcodeproj */;
+			containerPortal = 3F913350237A5A6E006DB0A5 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
 			remoteInfo = ChartsTests;
-		};
-		CEA702E42003C6A000FDFB89 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CEA702D92003C66800FDFB89 /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = A58A4ED274A941CA248EA921;
-			remoteInfo = Charts;
 		};
 		CEDAF2601F5FE8E100310153 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -162,7 +155,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CEA702E32003C6A000FDFB89 /* Charts.framework in Embed Frameworks */,
+				3F91335A237A5A9E006DB0A5 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +163,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F913350237A5A6E006DB0A5 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		CE09053C20333E9400B1445A /* ConsentFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentFormViewController.swift; sourceTree = "<group>"; };
 		CE1362AC20765FDE001E58B2 /* ResultLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultLabelViewController.swift; sourceTree = "<group>"; };
 		CE1362AE20766705001E58B2 /* ResultLineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultLineChartViewController.swift; sourceTree = "<group>"; };
@@ -248,7 +242,6 @@
 		CE9EBB7720ADB24A008B9200 /* WifiUDPingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiUDPingTest.swift; sourceTree = "<group>"; };
 		CE9EBB7920ADB258008B9200 /* CellUDPingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellUDPingTest.swift; sourceTree = "<group>"; };
 		CEA4CF37207BAC2C00650DFF /* DownloadSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSessionDelegate.swift; sourceTree = "<group>"; };
-		CEA702D92003C66800FDFB89 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Charts.xcodeproj; sourceTree = "<group>"; };
 		CEA702E72003D67100FDFB89 /* MobileRunnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileRunnerViewController.swift; sourceTree = "<group>"; };
 		CEA702EC2003DB4D00FDFB89 /* DateValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
 		CEA702ED2003DB4D00FDFB89 /* IntAxisValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntAxisValueFormatter.swift; sourceTree = "<group>"; };
@@ -281,10 +274,10 @@
 		CEDAF2581F5FE8E000310153 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEDAF25A1F5FE8E000310153 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEDAF25F1F5FE8E100310153 /* MultipathTesterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultipathTesterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEDAF2631F5FE8E100310153 /* QUICTesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QUICTesterTests.swift; sourceTree = "<group>"; };
+		CEDAF2631F5FE8E100310153 /* MultipathTesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipathTesterTests.swift; sourceTree = "<group>"; };
 		CEDAF2651F5FE8E100310153 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEDAF26A1F5FE8E100310153 /* MultipathTesterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultipathTesterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEDAF26E1F5FE8E100310153 /* QUICTesterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QUICTesterUITests.swift; sourceTree = "<group>"; };
+		CEDAF26E1F5FE8E100310153 /* MultipathTesterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipathTesterUITests.swift; sourceTree = "<group>"; };
 		CEDAF2701F5FE8E100310153 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF63EB3209321E10029B6EA /* MobileSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileSettingsTableViewController.swift; sourceTree = "<group>"; };
 		CEF63EB620933FA40029B6EA /* MobileSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -296,9 +289,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE58F4731FC34677009EA08F /* SystemConfiguration.framework in Frameworks */,
+				3F913359237A5A9E006DB0A5 /* Charts.framework in Frameworks */,
 				CE58F4711FC3466E009EA08F /* Security.framework in Frameworks */,
 				CE23A8A41FD9534F00894CA7 /* Quictraffic.framework in Frameworks */,
-				CEA702E22003C6A000FDFB89 /* Charts.framework in Frameworks */,
 				CE58F46F1FC34660009EA08F /* MobileCoreServices.framework in Frameworks */,
 				CE26852D201239A400462C6E /* NetworkExtension.framework in Frameworks */,
 				CE58F46D1FC34651009EA08F /* CFNetwork.framework in Frameworks */,
@@ -323,6 +316,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F913351237A5A6E006DB0A5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F913356237A5A6E006DB0A5 /* Charts.framework */,
+				3F913358237A5A6E006DB0A5 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CE09053A20333E5800B1445A /* Initial */ = {
 			isa = PBXGroup;
 			children = (
@@ -512,15 +514,6 @@
 			path = Delegate;
 			sourceTree = "<group>";
 		};
-		CEA702DA2003C66800FDFB89 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CEA702DF2003C66900FDFB89 /* Charts.framework */,
-				CEA702E12003C66900FDFB89 /* ChartsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		CEA702EB2003DB4100FDFB89 /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,7 +592,7 @@
 		CEDAF2421F5FE8E000310153 = {
 			isa = PBXGroup;
 			children = (
-				CEA702D92003C66800FDFB89 /* Charts.xcodeproj */,
+				3F913350237A5A6E006DB0A5 /* Charts.xcodeproj */,
 				CEDAF24D1F5FE8E000310153 /* MultipathTester */,
 				CEDAF2621F5FE8E100310153 /* MultipathTesterTests */,
 				CEDAF26D1F5FE8E100310153 /* MultipathTesterUITests */,
@@ -657,7 +650,7 @@
 		CEDAF2621F5FE8E100310153 /* MultipathTesterTests */ = {
 			isa = PBXGroup;
 			children = (
-				CEDAF2631F5FE8E100310153 /* QUICTesterTests.swift */,
+				CEDAF2631F5FE8E100310153 /* MultipathTesterTests.swift */,
 				CEDAF2651F5FE8E100310153 /* Info.plist */,
 			);
 			path = MultipathTesterTests;
@@ -666,7 +659,7 @@
 		CEDAF26D1F5FE8E100310153 /* MultipathTesterUITests */ = {
 			isa = PBXGroup;
 			children = (
-				CEDAF26E1F5FE8E100310153 /* QUICTesterUITests.swift */,
+				CEDAF26E1F5FE8E100310153 /* MultipathTesterUITests.swift */,
 				CEDAF2701F5FE8E100310153 /* Info.plist */,
 			);
 			path = MultipathTesterUITests;
@@ -687,7 +680,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				CEA702E52003C6A000FDFB89 /* PBXTargetDependency */,
 			);
 			name = MultipathTester;
 			productName = QUICTester;
@@ -742,7 +734,7 @@
 				TargetAttributes = {
 					CEDAF24A1F5FE8E000310153 = {
 						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -761,11 +753,13 @@
 					};
 					CEDAF25E1F5FE8E100310153 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 						TestTargetID = CEDAF24A1F5FE8E000310153;
 					};
 					CEDAF2691F5FE8E100310153 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 						TestTargetID = CEDAF24A1F5FE8E000310153;
 					};
@@ -784,8 +778,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = CEA702DA2003C66800FDFB89 /* Products */;
-					ProjectRef = CEA702D92003C66800FDFB89 /* Charts.xcodeproj */;
+					ProductGroup = 3F913351237A5A6E006DB0A5 /* Products */;
+					ProjectRef = 3F913350237A5A6E006DB0A5 /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -798,18 +792,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		CEA702DF2003C66900FDFB89 /* Charts.framework */ = {
+		3F913356237A5A6E006DB0A5 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = CEA702DE2003C66900FDFB89 /* PBXContainerItemProxy */;
+			remoteRef = 3F913355237A5A6E006DB0A5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		CEA702E12003C66900FDFB89 /* ChartsTests.xctest */ = {
+		3F913358237A5A6E006DB0A5 /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = CEA702E02003C66900FDFB89 /* PBXContainerItemProxy */;
+			remoteRef = 3F913357237A5A6E006DB0A5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -947,7 +941,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDAF2641F5FE8E100310153 /* QUICTesterTests.swift in Sources */,
+				CEDAF2641F5FE8E100310153 /* MultipathTesterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,18 +949,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDAF26F1F5FE8E100310153 /* QUICTesterUITests.swift in Sources */,
+				CEDAF26F1F5FE8E100310153 /* MultipathTesterUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CEA702E52003C6A000FDFB89 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Charts;
-			targetProxy = CEA702E42003C6A000FDFB89 /* PBXContainerItemProxy */;
-		};
 		CEDAF2611F5FE8E100310153 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CEDAF24A1F5FE8E000310153 /* MultipathTester */;
@@ -1036,7 +1025,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "~/git/QUICTester";
+				FRAMEWORK_SEARCH_PATHS = "~/git/MultipathTester";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1097,7 +1086,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "~/git/QUICTester";
+				FRAMEWORK_SEARCH_PATHS = "~/git/MultipathTester";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1122,7 +1111,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MultipathTester/MultipathTester.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y5FQS7HL65;
+				DEVELOPMENT_TEAM = 475D9HRTKL;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1132,12 +1121,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = be.uclouvain.MultipathTester;
+				PRODUCT_BUNDLE_IDENTIFIER = me.tianium.MultipathTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_BITCODE_FROM_COPIED_FILES = No;
 				SWIFT_OBJC_BRIDGING_HEADER = "MultipathTester/MultipathTester-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7";
 			};
@@ -1151,7 +1140,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MultipathTester/MultipathTester.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y5FQS7HL65;
+				DEVELOPMENT_TEAM = 475D9HRTKL;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1161,11 +1150,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = be.uclouvain.MultipathTester;
+				PRODUCT_BUNDLE_IDENTIFIER = me.tianium.MultipathTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_BITCODE_FROM_COPIED_FILES = No;
 				SWIFT_OBJC_BRIDGING_HEADER = "MultipathTester/MultipathTester-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7";
 			};
@@ -1178,11 +1167,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VJZ2VP5AH7;
-				INFOPLIST_FILE = QUICTesterTests/Info.plist;
+				INFOPLIST_FILE = MultipathTesterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = be.uclouvain.QUICTesterTests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.tianium.MultipathTesterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MultipathTester.app/MultipathTester";
 			};
@@ -1195,11 +1184,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VJZ2VP5AH7;
-				INFOPLIST_FILE = QUICTesterTests/Info.plist;
+				INFOPLIST_FILE = MultipathTesterTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = be.uclouvain.QUICTesterTests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.tianium.MultipathTesterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MultipathTester.app/MultipathTester";
 			};
@@ -1210,14 +1199,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VJZ2VP5AH7;
-				INFOPLIST_FILE = QUICTesterUITests/Info.plist;
+				DEVELOPMENT_TEAM = 475D9HRTKL;
+				FRAMEWORK_SEARCH_PATHS = "~/git/MultipathTester";
+				INFOPLIST_FILE = MultipathTesterUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = be.uclouvain.QUICTesterUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.tianium.MultipathTesterUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = QUICTester;
+				TEST_TARGET_NAME = MultipathTester;
 			};
 			name = Debug;
 		};
@@ -1226,14 +1216,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VJZ2VP5AH7;
-				INFOPLIST_FILE = QUICTesterUITests/Info.plist;
+				DEVELOPMENT_TEAM = 475D9HRTKL;
+				FRAMEWORK_SEARCH_PATHS = "~/git/MultipathTester";
+				INFOPLIST_FILE = MultipathTesterUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = be.uclouvain.QUICTesterUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.tianium.MultipathTesterUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = QUICTester;
+				TEST_TARGET_NAME = MultipathTester;
 			};
 			name = Release;
 		};

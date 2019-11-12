@@ -131,7 +131,7 @@ class StaticRunnerViewController: UIViewController, UITableViewDataSource, UITab
         locations = []
         
         // Start observing app going to background notifications
-        NotificationCenter.default.addObserver(self, selector: #selector(MobileRunnerViewController.applicationDidSwitchToBackground(note:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MobileRunnerViewController.applicationDidSwitchToBackground(note:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
 
         
         NotificationCenter.default.post(name: Utils.TestsLaunchedNotification, object: nil, userInfo: ["startNewTestsEnabled": false])
@@ -174,12 +174,12 @@ class StaticRunnerViewController: UIViewController, UITableViewDataSource, UITab
         self.stoppedTests = true
         self.stoppedIndex = self.runningIndex
         if backgrounded {
-            let alert = UIAlertController(title: "Test interrupted!", message: "The tests stopped because the application backgrounded.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: "Test interrupted!", message: "The tests stopped because the application backgrounded.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "Test interrupted!", message: "The tests stopped because network conditions changed. If you want to evaluate mobile cases, please try mobile tests.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: "Test interrupted!", message: "The tests stopped because network conditions changed. If you want to evaluate mobile cases, please try mobile tests.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -327,8 +327,8 @@ class StaticRunnerViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func cycleFromViewController(_ oldViewController: UIViewController, toViewController newViewController: UIViewController) {
-        oldViewController.willMove(toParentViewController: nil)
-        self.addChildViewController(newViewController)
+        oldViewController.willMove(toParent: nil)
+        self.addChild(newViewController)
         self.addSubview(newViewController.view, toView:self.resultContainerView!)
         newViewController.view.alpha = 0
         newViewController.view.layoutIfNeeded()
@@ -338,8 +338,8 @@ class StaticRunnerViewController: UIViewController, UITableViewDataSource, UITab
         },
                                    completion: { finished in
                                     oldViewController.view.removeFromSuperview()
-                                    oldViewController.removeFromParentViewController()
-                                    newViewController.didMove(toParentViewController: self)
+                                    oldViewController.removeFromParent()
+                                    newViewController.didMove(toParent: self)
         })
     }
     
@@ -355,9 +355,9 @@ class StaticRunnerViewController: UIViewController, UITableViewDataSource, UITab
         startTime = Date()
         self.navigationItem.hidesBackButton = true
         cellTimer = Timer(timeInterval: 0.5, target: self, selector: #selector(StaticRunnerViewController.probeCellular), userInfo: nil, repeats: true)
-        RunLoop.current.add(cellTimer!, forMode: .commonModes)
+        RunLoop.current.add(cellTimer!, forMode: RunLoop.Mode.common)
         chartTimer = Timer(timeInterval: 0.2, target: self, selector: #selector(StaticRunnerViewController.updateChart), userInfo: nil, repeats: true)
-        RunLoop.current.add(chartTimer!, forMode: .commonModes)
+        RunLoop.current.add(chartTimer!, forMode: RunLoop.Mode.common)
         print("Chart timer set")
         print("We start the tests")
         let resultLabelViewController = self.currentResultViewController as! ResultLabelViewController

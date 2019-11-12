@@ -676,7 +676,7 @@ import UIKit
      ## Author
      Luis Padron
      */
-    open var animationStyle: String = kCAMediaTimingFunctionEaseIn {
+    open var animationStyle: String = convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.easeIn) {
         didSet {
             self.ringLayer.animationStyle = self.animationStyle
         }
@@ -836,4 +836,9 @@ import UIKit
         self.value = value
         CATransaction.commit()
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCAMediaTimingFunctionName(_ input: CAMediaTimingFunctionName) -> String {
+	return input.rawValue
 }

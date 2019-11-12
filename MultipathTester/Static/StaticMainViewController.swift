@@ -56,7 +56,7 @@ class StaticMainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         timer = Timer(timeInterval: 0.5, target: self, selector: #selector(StaticMainViewController.probeCellular), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer!, forMode: .commonModes)
+        RunLoop.current.add(timer!, forMode: RunLoop.Mode.common)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -194,8 +194,8 @@ class StaticMainViewController: UIViewController {
         This mode allows you to test how your device deals with multiple paths when conditions are stable. It prefers WiFi only by default, but you can enable the aggregation mode to benefit from the cellular.
         
         Some tests are bandwidth-intensive. Please do alter network connectivity during the tests.
-        """, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        """, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     

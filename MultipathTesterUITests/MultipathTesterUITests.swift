@@ -8,7 +8,7 @@
 
 import XCTest
 
-class QUICTesterUITests: XCTestCase {
+class MultipathTesterUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
