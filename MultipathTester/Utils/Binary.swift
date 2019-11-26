@@ -11,13 +11,13 @@ import UIKit
 class Binary {
     static func getUInt32(bytes: [UInt8], startIndex: Int) -> UInt32 {
         let subBytes = bytes[startIndex..<startIndex+4]
-        let data = Data(bytes: subBytes)
+        let data = Data(_: subBytes)
         return UInt32(bigEndian: data.withUnsafeBytes { $0.pointee })
     }
     
     static func getUInt64(bytes: [UInt8], startIndex: Int) -> UInt64 {
         let subBytes = bytes[startIndex..<startIndex+8]
-        let data = Data(bytes: subBytes)
+        let data = Data(_: subBytes)
         return UInt64(bigEndian: data.withUnsafeBytes { $0.pointee })
     }
     

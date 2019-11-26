@@ -81,7 +81,7 @@ class TCPClientBulk {
         
         while (res == .timedOut) {
             res = group.wait(timeout: DispatchTime.now() + 0.01)
-            let timeInfo = Date().timeIntervalSince1970
+            // let timeInfo = Date().timeIntervalSince1970
             let err2 = getsockopt(fd, IPPROTO_TCP, TCP_CONNECTION_INFO, &tcpi, &slen)
             if err2 != 0 {
                 print(err2, errno, ENOPROTOOPT)
@@ -94,7 +94,7 @@ class TCPClientBulk {
         }
         
         // Go for a last TCP info before closing
-        let timeInfo = Date().timeIntervalSince1970
+        // let timeInfo = Date().timeIntervalSince1970
         let err2 = getsockopt(fd, IPPROTO_TCP, TCP_CONNECTION_INFO, &tcpi, &slen)
         if err2 != 0 {
             print(err2, errno, ENOPROTOOPT)

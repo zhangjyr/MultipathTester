@@ -28,7 +28,7 @@ class DownloadSessionDelegate : NSObject, URLSessionDelegate, URLSessionDownload
     
     //MARK: session delegate
     func URLSession(session: URLSession, didBecomeInvalidWithError error: NSError?) {
-        print("session error: \(error?.localizedDescription).")
+        print("session error: \(String(describing: error?.localizedDescription)).")
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
@@ -102,7 +102,7 @@ class DownloadSessionDelegate : NSObject, URLSessionDelegate, URLSessionDownload
         if error == nil {
             print("session \(session) download completed")
         } else {
-            print("session \(session) download failed with error \(error?.localizedDescription)")
+            print("session \(session) download failed with error \(String(describing: error?.localizedDescription))")
         }
     }
     

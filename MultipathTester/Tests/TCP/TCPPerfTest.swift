@@ -210,7 +210,7 @@ class TCPPerfTest: BasePerfTest {
                     if cwinData[label] == nil {
                         cwinData[label] = [CWinData]()
                     }
-                    cwinData[label]!.append(CWinData(time: timeInfo, cwin: UInt64(subflowInfo["tcpi_snd_cwnd"] as! UInt32)))
+                    cwinData[label]!.append(CWinData(time: timeInfo, cwin: UInt64(subflowInfo["tcpi_snd_cwnd"] as? UInt32 ?? 0)))
                 }
             } else {
                 if cwinData["Congestion Window"] == nil {
@@ -227,7 +227,7 @@ class TCPPerfTest: BasePerfTest {
                     retransmittedNow = 0
                     for sfID in subflowsInfo.keys {
                         let subflowInfo = subflowsInfo[sfID] as! [String: Any]
-                        let retransmittedSf = subflowInfo["tcpi_txretransmitbytes"] as! UInt64
+                        let retransmittedSf = subflowInfo["tcpi_txretransmitbytes"] as? UInt64 ?? 0
                         retransmittedNow += retransmittedSf
                     }
                 } else {
@@ -286,7 +286,7 @@ class TCPPerfTest: BasePerfTest {
                     retransmittedNow = 0
                     for sfID in subflowsInfo.keys {
                         let subflowInfo = subflowsInfo[sfID] as! [String: Any]
-                        let retransmittedSf = subflowInfo["tcpi_txretransmitbytes"] as! UInt64
+                        let retransmittedSf = subflowInfo["tcpi_txretransmitbytes"] as? UInt64 ?? 0
                         retransmittedNow += retransmittedSf
                     }
                 } else {

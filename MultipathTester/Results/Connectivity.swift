@@ -166,7 +166,7 @@ class Connectivity: Codable {
     
     static func getCurrentConnectivity(reachabilityStatus: NetworkStatus) -> Connectivity {
         let conn = Connectivity(networkType: .None, timestamp: Date())
-        #if (arch(i386) || arch(x86_64)) && os(iOS)
+        #if targetEnvironment(simulator)
             conn.networkType = .WiFiCellular
             conn.wifiNetworkName = "WiFier"
             conn.wifiBSSID = "12:34:56:78:90:12"
