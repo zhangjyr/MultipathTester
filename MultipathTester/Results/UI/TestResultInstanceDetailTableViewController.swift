@@ -8,16 +8,21 @@
 
 import UIKit
 import Charts
+import MessageUI
 
-class TestResultInstanceDetailTableViewController: UITableViewController, ChartViewDelegate {
+class TestResultInstanceDetailTableViewController: UITableViewController, ChartViewDelegate, MFMailComposeViewControllerDelegate {
     
     var testResult: TestResult?
     var chartValues: [ChartEntries] = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         chartValues = testResult!.getChartData()
+        
+        let exportButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.compose, target: self, action: #selector(sendMail))
+        navigationItem.rightBarButtonItem = exportButton
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -191,5 +196,30 @@ class TestResultInstanceDetailTableViewController: UITableViewController, ChartV
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @objc func sendMail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            let testTime = Utils.getDateFormatter().string(for: testResult!.getStartTime())!
+            
+            
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["jzhang33@gmu.edu"])
+            mail.setSubject("\(testResult!.getDescription())-\(testTime)")
+            
+            let csvs = testResult!.resultsToCsvs()
+            for f in csvs.keys {
+                mail.addAttachmentData(csvs[f]!.joined(separator: "\n").data(using: .ascii)!, mimeType: "text/csv", fileName: "\(f).csv")
+            }
+
+            present(mail, animated: true)
+        } else {
+            // show failure alert
+        }
+    }
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
 
 }

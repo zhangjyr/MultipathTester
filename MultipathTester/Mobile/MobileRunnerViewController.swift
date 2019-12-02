@@ -57,10 +57,14 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
     var computedWiFiSystemDistance: Double = 0.0
     var computedWiFiSystemLostTime: Date = Date()
     
-    var upQUICDelays: [ChartDataEntry] = [ChartDataEntry]()
-    var downQUICDelays: [ChartDataEntry] = [ChartDataEntry]()
-    var upMPTCPDelays: [ChartDataEntry] = [ChartDataEntry]()
-    var downMPTCPDelays: [ChartDataEntry] = [ChartDataEntry]()
+    var upDelays: [[ChartDataEntry]] = [[ChartDataEntry]]()
+    var downDelays: [[ChartDataEntry]] = [[ChartDataEntry]]()
+    var legendNames: [String] = [String]()
+    let legendColors = [
+        UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0),
+        UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0),
+        UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0),
+    ]
     
     var wifiBSSID: String = ""
     var wifiSSID: String = ""
@@ -74,7 +78,7 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
     var backgrounded = false
     
     // Currently fixed to handover
-    let multipathService: RunConfig.MultipathServiceType = .handover
+    let multipathService: RunConfig.MultipathServiceType = .interactive
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,11 +90,13 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
         LineChartHelper.initialize(chartView: downDelaysChartView, delegate: self, xValueFormatter: DateValueFormatter())
         
         streamTests = [
-            QUICStreamTest(ipVer: .any, maxPathID: 255, runTime: 0, waitTime: 0.0),
+            TCPStreamTest(ipVer: .any, runTime: 0, waitTime: 0.0, multipath: false),
             TCPStreamTest(ipVer: .any, runTime: 0, waitTime: 0.0, multipath: true),
+            QUICStreamTest(ipVer: .any, maxPathID: 255, runTime: 0, waitTime: 0.0),
         ]
         
         for t in streamTests {
+            legendNames.append(t.getProtocol().rawValue)
             t.setTestServer(testServer: testServer!)
             t.setMultipathService(service: multipathService)
         }
@@ -159,11 +165,11 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
             wifiBSSID = ""
             wifiIPs = []
             if multiHopTimer == nil {
-                multiHopTimer = Timer(timeInterval: 30.0, target: self, selector: #selector(MobileRunnerViewController.multiHopFired), userInfo: nil, repeats: false)
+                multiHopTimer = Timer(timeInterval: 60.0, target: self, selector: #selector(MobileRunnerViewController.multiHopFired), userInfo: nil, repeats: false)
                 RunLoop.current.add(multiHopTimer!, forMode: RunLoop.Mode.common)
             }
             DispatchQueue.main.async {
-                self.userLabel.text = "WiFi is lost, if none is found in a few seconds, the test will stop."
+                self.userLabel.text = "WiFi is lost, if none is found in one minite, the test will stop."
             }
         } else if !stopping && connectivity.wifiBSSID != wifiBSSID && connectivity.wifiNetworkName! == wifiSSID && connectivity.wifiAddresses!.containsSameElements(as: self.wifiIPs) {
             // Same network, but different AP; continue the test, might be interesting...
@@ -197,7 +203,7 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
     @objc
     func locationChanged(note: Notification) {
         let info = note.userInfo
-        guard let locations = info!["locations"] as? [CLLocation] else {
+        guard let locations = info?["locations"] as? [CLLocation] else {
             return
         }
         for cl in locations {
@@ -268,17 +274,17 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
     func updateDelays() {
         LineChartHelper.clearData(to: upDelaysChartView)
         LineChartHelper.clearData(to: downDelaysChartView)
-        if upQUICDelays.count > 0 {
-            LineChartHelper.setData(to: upDelaysChartView, with: upQUICDelays, label: "QUIC delays upload (ms)", color: UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0), mode: .linear)
+        
+        //  upDelaysChartViews = [upDelaysChartView, downDelaysChartView]
+        for (i, t) in upDelays.enumerated() {
+            if t.count > 0 {
+                LineChartHelper.setData(to: upDelaysChartView, with: t, label: "\(legendNames[i]) delays upload (ms)", color: legendColors[i], mode: .stepped)
+            }
         }
-        if upMPTCPDelays.count > 0 {
-            LineChartHelper.setData(to: upDelaysChartView, with: upMPTCPDelays, label: "MPTCP delays upload (ms)", color: UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0), mode: .linear)
-        }
-        if downQUICDelays.count > 0 {
-            LineChartHelper.setData(to: downDelaysChartView, with: downQUICDelays, label: "QUIC Delays download (ms)", color: UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0), mode: .linear)
-        }
-        if downMPTCPDelays.count > 0 {
-            LineChartHelper.setData(to: downDelaysChartView, with: downMPTCPDelays, label: "MPTCP Delays download (ms)", color: UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0), mode: .linear)
+        for (i, t) in downDelays.enumerated() {
+            if t.count > 0 {
+                LineChartHelper.setData(to: downDelaysChartView, with: t, label: "\(legendNames[i]) delays download (ms)", color: legendColors[i], mode: .stepped)
+            }
         }
         
         upDelaysChartView.notifyDataSetChanged()
@@ -304,7 +310,7 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
         let wifiInfoStart = InterfaceInfo.getInterfaceInfo(netInterface: .WiFi)
         let cellInfoStart = InterfaceInfo.getInterfaceInfo(netInterface: .Cellular)
         startTime = Date()
-        self.userLabel.text = "Please move away from your WiFi Access Point. The test will stop once the WiFi is lost."
+        self.userLabel.text = "Please move across WiFi Access Points. The test will stop once the WiFi is lost."
         self.navigationItem.hidesBackButton = true
         multiHopTimer = nil
         timer = Timer(timeInterval: 0.2, target: self, selector: #selector(MobileRunnerViewController.getDelays), userInfo: nil, repeats: true)
@@ -312,10 +318,12 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
         cellTimer = Timer(timeInterval: 0.5, target: self, selector: #selector(MobileRunnerViewController.probeCellular), userInfo: nil, repeats: true)
         RunLoop.current.add(cellTimer!, forMode: RunLoop.Mode.common)
         print("We start mobility!")
-        upQUICDelays = []
-        downQUICDelays = []
-        upMPTCPDelays = []
-        downMPTCPDelays = []
+        upDelays = []
+        downDelays = []
+        for _ in self.streamTests {
+            upDelays.append([ChartDataEntry]())
+            downDelays.append([ChartDataEntry]())
+        }
         cellUDPingTest = CellUDPingTest(testServer: testServer!)
         wifiUDPingTest = WifiUDPingTest(testServer: testServer!)
         
@@ -419,7 +427,7 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
             }
             benchmark.wifiUDPingDelays = self.wifiUDPingTest.delays
             benchmark.cellUDPingDelays = self.cellUDPingTest.delays
-            Utils.sendToServer(benchmark: benchmark, tests: self.streamTests)
+//            Utils.sendToServer(benchmark: benchmark, tests: self.streamTests)
             benchmark.save()
             self.cellTimer?.invalidate()
             self.cellTimer = nil
@@ -449,7 +457,7 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
     
     // MARK: Timer function
     @objc func getDelays() {
-        for t in streamTests {
+        for (i, t) in streamTests.enumerated() {
             let (newUpDelays, newDownDelays) = t.getProgressDelays()
             let newUpValues = stride(from: 0, to: newUpDelays.count, by: 1).map { (x) -> ChartDataEntry in
                 return ChartDataEntry(x: newUpDelays[x].time, y: Double(newUpDelays[x].delayUs) / 1000.0)
@@ -457,19 +465,38 @@ class MobileRunnerViewController: UIViewController, ChartViewDelegate {
             let newDownValues = stride(from: 0, to: newDownDelays.count, by: 1).map { (x) -> ChartDataEntry in
                 return ChartDataEntry(x: newDownDelays[x].time, y: Double(newDownDelays[x].delayUs) / 1000.0)
             }
-            switch t.getProtocol().main {
-            case .TCP:
-                upMPTCPDelays += newUpValues
-                downMPTCPDelays += newDownValues
-            case .QUIC:
-                upQUICDelays += newUpValues
-                downQUICDelays += newDownValues
-            }
-            
+
+            upDelays[i] += newUpValues
+            downDelays[i] += newDownValues
+
             if newUpValues.count > 0 || newDownValues.count > 0 {
                 gotDelays = true
             }
         }
+//        let (up1, down1): ([DelayData], [DelayData]) = streamTests[0].getProgressDelays()
+//        let (up2, down2): ([DelayData], [DelayData]) = streamTests[1].getProgressDelays()
+//        var upMin = up1.count
+//        if up1.count > up2.count {
+//            upMin = up2.count
+//        }
+//        var downMin = down1.count
+//        if down1.count > down2.count {
+//            downMin = down2.count
+//        }
+//        let newUpValues = stride(from: 0, to: upMin, by: 1).map { (i) -> ChartDataEntry in
+//            return ChartDataEntry(x: up1[i].time, y: (Double(up1[i].delayUs) - Double(up2[i].delayUs)) / 1000.0)
+//        }
+//        let newDownValues = stride(from: 0, to: downMin, by: 1).map { (i) -> ChartDataEntry in
+//            return ChartDataEntry(x: down1[i].time, y: (Double(down1[i].delayUs) - Double(down2[i].delayUs)) / 1000.0)
+//        }
+//
+//        upDelays[0] += newUpValues
+//        downDelays[0] += newDownValues
+//
+//        if newUpValues.count > 0 || newDownValues.count > 0 {
+//            gotDelays = true
+//        }
+                
         self.updateDelays()
     }
     

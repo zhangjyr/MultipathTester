@@ -65,6 +65,7 @@ class BenchmarkSummaryTableViewController: UITableViewController {
         
         sections["Benchmark"] = [
             TableItem(title: "Time", detail: dateFormatter.string(from: benchmark!.startTime), tag: .None),
+            TableItem(title: "Duration", detail: Utils.stringSecondsToMinutesSeconds(seconds: Int(benchmark!.duration)), tag: .None),
         ]
         if let wifiBytesDistance = bench.wifiBytesDistance {
             sections["Benchmark"]!.append(TableItem(title: "WiFi reachability", detail: String(format: "%.1f m", wifiBytesDistance), tag: .None))

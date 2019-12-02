@@ -41,7 +41,7 @@ class LineChartHelper {
         leftAxis.labelFont = .systemFont(ofSize: 12, weight: .light)
         leftAxis.drawGridLinesEnabled = true
         leftAxis.granularityEnabled = true
-        leftAxis.axisMinimum = 0
+        //leftAxis.axisMinimum = 0
         //leftAxis.axisMaximum = 170
         leftAxis.yOffset = -9
         leftAxis.labelTextColor = UIColor(red: 255/255, green: 192/255, blue: 56/255, alpha: 1)

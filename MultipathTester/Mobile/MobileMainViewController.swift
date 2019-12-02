@@ -107,7 +107,7 @@ class MobileMainViewController: UIViewController {
     @objc
     func locationChanged(note: Notification) {
         let info = note.userInfo
-        guard let locations = info!["locations"] as? [CLLocation] else {
+        guard let locations = info?["locations"] as? [CLLocation] else {
             return
         }
         for cl in locations {

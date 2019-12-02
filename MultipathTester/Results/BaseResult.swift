@@ -54,6 +54,10 @@ class BaseResult: Codable {
         ]
     }
     
+    func resultsToCsvs() -> [String: [String]] {
+        return [:]
+    }
+    
     func toJSONDict(benchmarkUUID: String, order: Int, protoInfo: [[String: Any]], config: [String: Any]) -> [String: Any] {
         return [
             "benchmark_uuid": benchmarkUUID,

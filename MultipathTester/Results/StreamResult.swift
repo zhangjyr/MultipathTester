@@ -105,4 +105,18 @@ class StreamResult: BaseResult, TestResult {
         res["error_msg"] = errorMsg
         return res
     }
+    
+    override func resultsToCsvs() -> [String: [String]] {
+        var res: [String: [String]] = [:]
+        let upValuesCsv = upDelays.map { (dd) -> String in
+            return "\(dd.time),\(Double(dd.delayUs) / 1000.0)" // us to ms
+        }
+        let downValuesCsv = downDelays.map { (dd) -> String in
+            return "\(dd.time),\(Double(dd.delayUs) / 1000.0)" // us to ms
+        }
+        
+        res["upload_delays"] = upValuesCsv
+        res["download_delays"] = downValuesCsv
+        return res
+    }
 }
